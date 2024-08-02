@@ -57,7 +57,7 @@ const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, 
                                     autoComplete="off"
                                     type="text"
                                     name="todo-title"
-                                    id="todo-title"
+                                    id="floating-todo-title"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     className="focus:outline-none focus:ring-0 bg-[#1e1e1e] text-white flex-0 block w-full rounded-none sm:text-sm"
@@ -68,7 +68,6 @@ const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, 
                                             createTodo(e as any);
                                         }
                                     }}
-
                                 />
                             </div>
                             <div className="flex items-center h-6">

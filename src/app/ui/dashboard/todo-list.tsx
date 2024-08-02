@@ -57,15 +57,15 @@ export default function TodoList() {
         setTodos(updatedTodos);
     };
 
-    const getPriorityLabel = (priority: number) => {
-        switch (priority) {
-            case 1: return "Urgent";
-            case 2: return "High";
-            case 3: return "Medium";
-            case 4: return "Low";
-            default: return "Not set";
-        }
-    };
+    // const getPriorityLabel = (priority: number) => {
+    //     switch (priority) {
+    //         case 1: return "Urgent";
+    //         case 2: return "High";
+    //         case 3: return "Medium";
+    //         case 4: return "Low";
+    //         default: return "Not set";
+    //     }
+    // };
 
     const getPriorityColor = (priority: number) => {
         switch (priority) {
@@ -99,8 +99,8 @@ export default function TodoList() {
                     <ul className="divide-y-[0.5px] divide-[#373737]">
                         {todos.map((todo, index) => (
                             <li key={todo.id}>
-                                <div className="w-[800px] h-[58px] items-center flex">
-                                    <div className="mr-2 pb-6">
+                                <div className="w-[760px] h-[58px] items-center flex">
+                                    <div className="mr-2 pb-4">
                                         <ColorfulCheckbox
                                             index={todo.id}
                                             priorityColor={getPriorityColor(todo.priority)}
@@ -108,14 +108,24 @@ export default function TodoList() {
                                             setTodos={setTodos}
                                         />
                                     </div>
-                                    <div className="mr-2 py-2">
-                                        <p className={`text-xs font-medium ${todo.completed ? 'text-gray-900 line-through' : 'text-white'}`}>
-                                            {todo.title}
-                                        </p>
-                                        <div className="">
-                                            <span className={`text-xs font-medium ${todo.completed ? 'text-gray-900 line-through' : 'text-red-400'}`}>
-                                                {formatDate(todo.dueDateTime)}
+                                    <div className="py-2 w-full">
+                                        <div>
+                                            <p className={`text-xs font-medium text-white`}>
+                                                {todo.title}
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center w-full h-4 space-x-1">
+                                            <div className="mr-[640px]">
+                                                <span className={`text-xs font-medium text-red-400`}>
+                                                    {formatDate(todo.dueDateTime)}
+                                                </span>
+                                            </div>
+                                            <span className="text-xs font-medium text-gray-400">
+                                                Inbox
                                             </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="AyswQEh">
+                                                <path fill="currentColor" fillRule="evenodd" d="M5.509 2h4.982a2 2 0 0 1 1.923 1.45l1.509 5.28c.051.18.077.365.077.55V12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.28a2 2 0 0 1 .077-.55l1.509-5.28A2 2 0 0 1 5.509 2Zm0 1a1 1 0 0 0-.962.726l-1.509 5.28A1 1 0 0 0 3 9.28V12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9.28a.997.997 0 0 0-.039-.274l-1.508-5.28A1 1 0 0 0 10.49 3H5.51Zm4.685 7a2.25 2.25 0 0 1-4.388 0H4.5a.5.5 0 1 1 0-1h1.75a.5.5 0 0 1 .5.5 1.25 1.25 0 0 0 2.5 0 .5.5 0 0 1 .5-.5h1.75a.5.5 0 0 1 0 1h-1.306Z" clipRule="evenodd"></path>
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>

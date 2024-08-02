@@ -68,6 +68,7 @@ const ColorfulCheckbox: React.FC<ColorfulCheckboxProps> = ({ index, priorityColo
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
                 <button
                     type="button"
+                    className={`hover:bg-gray`}
                     style={todo.completed ? checkboxCheckedStyle : checkboxStyle}
                     // onClick={() => setIsChecked(!isChecked)}
                     onClick={removeTodo}
@@ -80,6 +81,7 @@ const ColorfulCheckbox: React.FC<ColorfulCheckboxProps> = ({ index, priorityColo
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         style={{ ...checkmarkStyle, width: '16px', height: '16px' }}
+                        className={`hover:fill-gray-50`}
                     >
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>

@@ -26,7 +26,7 @@ export default function LandingPage() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Organize Your Life with FirstTodo</h2>
           <p className="text-xl mb-8">Simple, fast, and intuitive task management for everyone.</p>
-          <Link href="/dashboard" className="bg-green-500 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-green-600 transition duration-300">
+          <Link href="/app" className="bg-green-500 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-green-600 transition duration-300">
             Get Started for Free
           </Link>
         </div>
