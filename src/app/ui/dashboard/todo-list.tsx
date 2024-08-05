@@ -57,15 +57,15 @@ export default function TodoList() {
         setTodos(updatedTodos);
     };
 
-    // const getPriorityLabel = (priority: number) => {
-    //     switch (priority) {
-    //         case 1: return "Urgent";
-    //         case 2: return "High";
-    //         case 3: return "Medium";
-    //         case 4: return "Low";
-    //         default: return "Not set";
-    //     }
-    // };
+    const getPriorityLabel = (priority: number) => {
+        switch (priority) {
+            case 1: return "Urgent";
+            case 2: return "High";
+            case 3: return "Medium";
+            case 4: return "Low";
+            default: return "Not set";
+        }
+    };
 
     const getPriorityColor = (priority: number) => {
         switch (priority) {

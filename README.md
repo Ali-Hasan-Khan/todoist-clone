@@ -1,2 +1,3 @@
-# todoist-clone
-A todoist clone based on nextjs
+[ ] add todo
+[ ] create todo
+[ ]
