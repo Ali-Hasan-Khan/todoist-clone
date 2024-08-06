@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Button3D from './ui/home/startButton';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 const FeatureItem = ({ title, description }: { title: string; description: string }) => (
   <div className="bg-white p-6 rounded-lg shadow-md">
@@ -15,14 +17,34 @@ export default function LandingPage() {
   function handleStartForFree() {
     window.location.href = "/app";
   }
+
+  const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 750) {
+        setIsOpen(false);
+      } else {
+        setIsOpen(true);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call initially to set the correct state based on initial window size
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black">
-      <header className="container mx-auto px-4 py-8">
-        <nav className="flex justify-between items-center">
+      <header className="container mx-0 md:mx-auto md:px-4 md:py-8">
+        <nav className="flex md:justify-between items-center border-b-2 md:border-b-0">
           <div>
             <h1 className="text-3xl font-bold text-red-500">todoist</h1>
           </div>
-          <div className="flex divide-x-2">
+          {isOpen && <div className="flex divide-x-2">
             <div className="flex items-center">
               <Link href="/login" className="bg-white px-4 py-2 rounded-md hover:bg-blue-100 transition duration-300">
                 Features
@@ -38,14 +60,14 @@ export default function LandingPage() {
               </Link>
             </div>
             <div className="flex items-center">
-              <Link href="/login" className="bg-white px-4 py-2 rounded-md hover:bg-blue-100 transition duration-300">
+              <Link href="/login" className="bg-white px-4 py-2 rounded-md hover:bg-gray-200 transition duration-300">
                 Log In
               </Link>
             </div>
             <Link href="/app" className="bg-red-500 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-red-700 transition duration-300">
               Start for Free
             </Link>
-          </div>
+          </div>}
         </nav>
       </header>
 
@@ -62,6 +84,22 @@ export default function LandingPage() {
           </div>
 
         </div>
+        <div className="flex justify-center my-16">
+          <div className="relative w-[1312px] h-[738px]">
+            <Image
+              className="hidden md:block rounded-2xl object-cover"
+              alt="home-teams-bg"
+              src="/images/static_home-teams_intro_background.avif"
+              fill
+            ></Image>
+            <Image
+              className="hidden md:block absolute top-0 left-0 object-cover"
+              alt="home-teams-bg"
+              src="/images/static_home-teams_intro_wide_headerui.avif"
+              fill
+            ></Image>
+          </div>
+        </div>
         <div className="mb-20"></div>
         <div className="flex justify-center">
           <div className="w-[1360px] h-[136px] flex items-center divide-x-2 justify-between text-center">
@@ -73,7 +111,13 @@ export default function LandingPage() {
                 </blockquote>
               </div>
               <div className="grid place-items-center w-[271px]">
-                <img width="92" height="16" src="https://res.cloudinary.com/imagist/image/upload/h_114,e_colorize,o_48,co_rgb:17150f7a/v1715868560/the-verge_gdh1dw.png"></img>
+                <Image
+                  className="hidden md:block"
+                  alt="the verge logo"
+                  width={92}
+                  height={16}
+                  src="/images/the-verge.png">
+                </Image>
               </div>
             </div>
             <div className="px-6 flex flex-col justify-between items-center w-[319px] h-[136px]">
@@ -83,7 +127,13 @@ export default function LandingPage() {
                 </blockquote>
               </div>
               <div className="grid place-items-center w-[271px]">
-                <img width="139" height="18" src="https://res.cloudinary.com/imagist/image/upload/h_114,e_colorize,o_48,co_rgb:17150f7a/v1715868560/wirecutter_blf8c5.png"></img>
+                <Image
+                  className="hidden md:block"
+                  alt="wirecutter logo"
+                  width={138}
+                  height={18}
+                  src="/images/wirecutter.png">
+                </Image>
               </div>
             </div>
             <div className="px-6 flex flex-col justify-between items-center w-[319px] h-[136px]">
@@ -94,7 +144,13 @@ export default function LandingPage() {
                 </blockquote>
               </div>
               <div className="grid place-items-center w-[271px]">
-                <img width="30" height="40" src="https://res.cloudinary.com/imagist/image/upload/h_114,e_colorize,o_48,co_rgb:17150f7a/v1715868560/pc-mag_ak9mna.png"></img>
+                <Image
+                  className="hidden md:block"
+                  alt="PC mag logo"
+                  width={30}
+                  height={40}
+                  src="/images/pc-mag.png">
+                </Image>
               </div>
             </div>
             <div className="px-6 flex flex-col justify-between items-center w-[319px] h-[136px]">
@@ -104,14 +160,20 @@ export default function LandingPage() {
                 </blockquote>
               </div>
               <div className="flex justify-center w-[271px]">
-                <img width="120" height="18" src="https://res.cloudinary.com/imagist/image/upload/h_114,e_colorize,o_48,co_rgb:17150f7a/v1715868560/techradar_qt0nt6.png"></img>
+                <Image
+                  className="hidden md:block"
+                  alt="techradar logo"
+                  width={120}
+                  height={18}
+                  src="/images/techradar.png">
+                </Image>
               </div>
             </div>
           </div>
         </div>
       </main>
 
-      <footer className="container my-20 mx-auto px-4 py-8 text-center">
+      <footer className="bg-[#ffefe5] mt-10 mb-2 w-full px-4 py-8 text-center">
         <p>&copy; 2023 Todoist. All rights reserved.</p>
       </footer>
     </div>
