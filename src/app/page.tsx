@@ -55,7 +55,7 @@ export default function LandingPage() {
             <h2 className="text-6xl font-bold">Organize your work and life, finally. </h2>
           </div>
           <div className="">
-            <p className="mx-8 text-xl text-gray-600">Simplify life for both you and your team. The world's #1 task manager and to-do list app.</p>
+            <p className="mx-8 text-xl text-gray-600">Simplify life for both you and your team. The worlds #1 task manager and to-do list app.</p>
           </div>
           <div>
             <Button3D onClick={handleStartForFree} />
