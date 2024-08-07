@@ -23,7 +23,7 @@ const Button3D: React.FC<Button3DProps> = ({ onClick, text = "Start for free" })
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className={`relative px-6 py-3 font-bold text-white group transition-all duration-150 ease-out transform hover:-translate-y-1 ${
+      className={`px-2 py-1.5 relative md:px-6 md:py-3 font-bold text-white group transition-all duration-150 ease-out transform hover:-translate-y-1 ${
         isPressed ? 'translate-y-1 transition-none' : ''
       }`}
     >
@@ -37,7 +37,7 @@ const Button3D: React.FC<Button3DProps> = ({ onClick, text = "Start for free" })
           isPressed ? 'bg-red-600' : ''
         }`}
       ></span>
-      <span className="relative">{text}</span>
+      <span className="relative text-xs md:text-xl">{text}</span>
     </button>
   );
 };

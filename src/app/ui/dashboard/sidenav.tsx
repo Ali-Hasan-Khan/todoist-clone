@@ -75,7 +75,7 @@ const SideNav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
   const pathname = usePathname();
 
   return (
-    <nav className={`bg-[#262626] text-white h-screen fixed left-0 top-0 w-[280px] p-4 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+    <nav className={`bg-[#262626] text-white h-screen fixed z-50 left-0 top-0 w-[280px] p-4 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="mb-6 flex flex-row justify-between">
         <div>
           <Link href="/app" className="text-xl font-bold">
