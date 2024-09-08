@@ -5,7 +5,7 @@ import FloatingForm from './floating-form';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-// import { signOut } from '../../../../auth';
+import { PowerIcon } from '@heroicons/react/24/outline';
 import { handleSignOut } from '@/app/lib/sign-out';
 
 interface Todo {
@@ -81,7 +81,7 @@ const SideNav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
       <div className="mb-6 flex flex-row justify-between">
         <div>
           <Link href="/app" className="text-xl font-bold">
-            My App
+            Todoist App
           </Link>
         </div>
         <div className="flex flex-row space-x-2">
@@ -102,39 +102,43 @@ const SideNav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
         </div>
       </div>
 
-      <ul className="">
-        <li className="pl-2 h-8 flex items-center rounded-md hover:bg-[#322f2a]">
-          <FloatingForm todos={todos} setTodos={setTodos} />
-        </li>
-        {links.map((link) => (
-          <li
-            key={link.name}
-            className={clsx(
-              "text-sm pl-2 h-8 flex items-center rounded-md hover:bg-[#322f2a]",
-              {
-                'bg-[#472524]': pathname === link.href,
-              },
-            )}
-          >
-            <Link href={link.href} className="flex space-x-1 items-center">
-              <span aria-hidden="true" className="hRQZFMhX5N2W_D53QQAgHGqMJtAEbRXE">
-                {link.icon}
-              </span>
-              <div>
-                {link.name}
-              </div>
-            </Link>
+      <div className="flex grow h-[680px] flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-10">
+        <ul className="">
+          <li className="pl-2 h-8 flex items-center rounded-md hover:bg-[#322f2a]">
+            <FloatingForm todos={todos} setTodos={setTodos} />
           </li>
-        ))}
-      </ul>
-      <form
-        action={handleSignOut}
-      >
-        <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-red-500 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
-          {/* <PowerIcon className="w-6" /> */}
-          <div className="hidden md:block">Sign Out</div>
-        </button>
-      </form>
+          {links.map((link) => (
+            <li
+              key={link.name}
+              className={clsx(
+                "text-sm pl-2 h-8 flex items-center rounded-md hover:bg-[#322f2a]",
+                {
+                  'bg-[#472524]': pathname === link.href,
+                },
+              )}
+            >
+              <Link href={link.href} className="flex space-x-1 items-center">
+                <span aria-hidden="true" className="hRQZFMhX5N2W_D53QQAgHGqMJtAEbRXE">
+                  {link.icon}
+                </span>
+                <div>
+                  {link.name}
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <form
+          action={handleSignOut}
+          className="flex"
+        >
+          <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md p-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+            {/* <PowerIcon className="w-6" /> */}
+            <PowerIcon className="w-5" />
+            <div className="hidden md:block">Sign Out</div>
+          </button>
+        </form>
+      </div>
     </nav>
   );
 };
