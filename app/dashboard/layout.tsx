@@ -1,5 +1,5 @@
 'use client';
-import SideNav from '@/app/ui/dashboard/sidenav';
+import SideNav from '../ui/dashboard/sidenav';
 import React from 'react';
 import { useState, useEffect } from 'react';
 

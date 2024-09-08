@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import AddTodoForm from '@/app/ui/dashboard/add-todo';
-import ColorfulCheckbox from '@/app/ui/dashboard/completed-btn';
+import AddTodoForm from './add-todo';
+import ColorfulCheckbox from './completed-btn';
 // import PriorityBtn from './priority-btn';
 // import DueDateBtn from './due-date-btn';
 // import TodoList from '@/app/ui/todo-list';

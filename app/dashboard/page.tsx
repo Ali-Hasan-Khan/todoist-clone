@@ -1,7 +1,7 @@
 import React from 'react';
 // import TodoList from '@/app/ui/todo-list';
-import SideNav from '@/app/ui/dashboard/sidenav';
-import TodoList from '@/app/ui/dashboard/todo-list';
+import SideNav from '../ui/dashboard/sidenav';
+import TodoList from '../ui/dashboard/todo-list';
 
 export default function DashboardPage() {
   return (

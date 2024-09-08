@@ -5,6 +5,8 @@ import FloatingForm from './floating-form';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+// import { signOut } from '../../../../auth';
+import { handleSignOut } from '@/app/lib/sign-out';
 
 interface Todo {
   id: number;
@@ -125,6 +127,14 @@ const SideNav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
           </li>
         ))}
       </ul>
+      <form
+        action={handleSignOut}
+      >
+        <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-red-500 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          {/* <PowerIcon className="w-6" /> */}
+          <div className="hidden md:block">Sign Out</div>
+        </button>
+      </form>
     </nav>
   );
 };

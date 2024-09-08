@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import AddTodoFloatingForm from '@/app/ui/dashboard/add-todo-floating';
+import AddTodoFloatingForm from './add-todo-floating';
 
 interface Todo {
   id: number;

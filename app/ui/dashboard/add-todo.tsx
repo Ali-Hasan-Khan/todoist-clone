@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import PriorityBtn from '@/app/ui/dashboard/priority-btn';
+import PriorityBtn from './priority-btn';
 
 interface Todo {
     id: number;
@@ -12,16 +12,16 @@ interface Todo {
     priority: number;
 }
 
-interface AddTodoFloatingProps {
+interface AddTodoProps {
     todos: Todo[];
     setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-    toggleFormVisibility: () => void;
 }
 
-const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, toggleFormVisibility }) => {
+const AddTodoForm: React.FC<AddTodoProps> = ({ todos, setTodos }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [priority, setPriority] = useState(4);
+    const [isFocused, setIsFocused] = useState(false);
     const titleInputRef = useRef<HTMLInputElement>(null);
 
     const createTodo = (e: React.FormEvent) => {
@@ -45,11 +45,15 @@ const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, 
         });
     };
 
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = () => setIsFocused(false);
+
+
     return (
         <div className="flex justify-center">
             <div className="flex flex-col w-[798px]">
-                <form className="" onSubmit={createTodo}>
-                    <div className="p-2.5 flex rounded-t-md shadow-sm flex-col border-[#353535] border">
+                <form className={`${isFocused ? 'border-gray-400' : 'border-[#353535]'} flex rounded-md shadow-sm flex-col border border-[#353535]`} onSubmit={createTodo}>
+                    <div className={`p-2.5 flex rounded-t-md shadow-sm flex-col` } >
                         <div className="text_editor mb-2">
                             <div>
                                 <input
@@ -57,17 +61,20 @@ const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, 
                                     autoComplete="off"
                                     type="text"
                                     name="todo-title"
-                                    id="floating-todo-title"
+                                    id="todo-title"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     className="focus:outline-none focus:ring-0 bg-[#1e1e1e] text-white flex-0 block w-full rounded-none sm:text-sm"
                                     placeholder="Task name"
+                                    onFocus={handleFocus}
+                                    onBlur={handleBlur}
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') {
                                             e.preventDefault();
                                             createTodo(e as any);
                                         }
                                     }}
+
                                 />
                             </div>
                             <div className="flex items-center h-6">
@@ -77,8 +84,11 @@ const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, 
                                     id="todo-description"
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
-                                    className="text-xs focus:outline-none focus:ring-0 bg-[#1e1e1e] text-white focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-l-md sm:text-xs border-transparent"
+                                    className="text-xs focus:outline-none focus:ring-0 bg-[#1e1e1e] text-white flex-1 block w-full rounded-none rounded-l-md sm:text-xs border-transparent"
                                     placeholder="Description"
+                                    onFocus={handleFocus}
+                                    onBlur={handleBlur}
+                                    autoComplete="off"
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') {
                                             e.preventDefault();
@@ -96,11 +106,15 @@ const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, 
                             />
                         </div>
                     </div>
-                    <div className="flex rounded-b-md justify-end pl-2 pr-3 py-2 border-[#353535] border">
+                    <div className="flex rounded-b-md justify-end pl-2 pr-3 py-2 border-[#353535] border-t">
                         <button
                             type="button"
                             className="mx-2 w-full sm:w-auto sm:max-w-24 inline-flex items-center px-4 py-2 border-transparent text-sm font-medium rounded-md text-white bg-[#292929] hover:bg-[#393939] focus:outline-none"
-                            onClick={toggleFormVisibility}
+                            onClick={() => {
+                                setTitle('');
+                                setDescription('');
+                                setPriority(4);
+                            }}
                         >
                             Cancel
                         </button>
@@ -117,4 +131,4 @@ const AddTodoFloatingForm: React.FC<AddTodoFloatingProps> = ({ todos, setTodos, 
     );
 };
 
-export default AddTodoFloatingForm;
+export default AddTodoForm;
